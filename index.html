@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Gym Calculator</title>
+</head>
+
+<body onload="onLoad()">
+    <div>
+        <label>Mode: </label>
+        <select id="mode" onchange="checkMode()">
+            <option value="1">Default</option>
+            <option value="2">Custom</option>
+        </select>
+        <div id="custom" style="display: none;">
+            <select id="input-type" onchange="checkInputType()">
+                <option value=1>Manual</option>
+                <option value=2>File</option>
+            </select>
+            <div>
+                <textarea id="typed-rotation" ></textarea>
+                <input id="file-upload" type="file" style="display: none;"></input>
+            </div>
+            <button type="submit" onclick="handleSubmit()">Submit</button>
+        </div>
+    </div>
+    <div>
+        <label>Current day</label>
+        <input id="input-day" type="date"></input>
+        <select id="select"></select>
+        <button type="button" onclick="calculate()">Calculate</button>
+        <p id="result"></p>
+    </div>
+</body>
+
+</html>
+
+<script src="rotation-calculator.js"></script>
