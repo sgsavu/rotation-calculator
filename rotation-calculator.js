@@ -35,7 +35,12 @@ function filterText(text) {
 async function handleSubmit() {
     const inputType = document.getElementById("input-type").value
     if (inputType == 1)
-        displayOptions(createOptionsObject(getElementValue("typed-rotation")))
+    {
+        const value = getElementValue("typed-rotation")
+        if (value!="")
+            displayOptions(createOptionsObject(value))
+    }
+        
     else if (inputType == 2)
         readInputFile(getElement("file-upload"))
 }
@@ -52,12 +57,16 @@ function createOptionsObject(listOfOptions) {
 function readInputFile(input) {
 
     var file = input.files[0];
-    var reader = new FileReader();
-    reader.onload = async function () {
-        displayOptions(createOptionsObject(this.result))
-    };
-
-    reader.readAsText(file)
+    if (file!=undefined)
+    {
+        var reader = new FileReader();
+        reader.onload = async function () {
+            displayOptions(createOptionsObject(this.result))
+        };
+    
+        reader.readAsText(file)
+    }
+    
 }
 
 function removeOptions(selectElement) {
